@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" >
+<head>
+  <title>{{ name }} - {{ version }}</title>
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"> 
+</head>
+<body class="home">
+  <header></header>
+  {% if error %}
+    <div>
+      <p> {{ error }} </p>
+    </div>
+  {% endif %}
+  <div class="page">
+    <h1> Last 20 time logs : {{ user }}</h1>
+    <ol>
+    {% for log in logs %}
+     <li><p>Date: {{ log.date }} start: {{ log.start }} end {{ log.end }} break-start {{ log['break-start'] }} break-end{{ log['break-end'] }}</p></li>
+    {% endfor %}
+    </ol>
+
+
+  </div>
+  <div> 
+    <p><a href="{{ url_for('times') }}"> Log Time </a></p>
+    <p><a href="{{ url_for('status') }}"> Status of Server </a></p>
+  </div>
+  <script>
+    var logs = {{ logs }}
+    window.onload = init()
+    function init() {
+      console.log( logs )
+      // let a = document.getElementById('mytime');
+      // let t = new Date()
+      // let r = t.toJSON().slice(0, 11) + t.getHours() +':'+ t.getMinutes();
+      // a.setAttribute( 'value', r );
+    }
+    
+  </script>
+</body>

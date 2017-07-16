@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" >
+<head>
+  <title>{{ name }} - {{version}}</title>
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"> 
+</head>
+<body class="time" onload="init()">
+  <header></header>
+  <div class="page">
+    <h1>Log Time for {{ user }} </h1>
+    <form method="POST" target="/times">
+      <p><input id="mytime" type="datetime-local" name="mytime" required /> </p>
+      <p>Select: 
+        <select id="event" name="event">
+          <option value="start">Start Work</option>
+          <option value="end">End Work</option>
+          <option value="break-start">Start Break</option>
+          <option value="break-end">End Break</option>
+        </select>
+      </p>
+      <!-- <p>Optional Note: <input type="text" name="note"></input></p> -->
+      <p><input type="submit"></input></p>
+    </form>
+  </div>
+  <div> 
+    <p><a href="{{ url_for('home') }}"> Home Page </a></p>
+  </div>
+  <script>
+    function init() {
+      let a = document.getElementById('mytime');
+      let t = new Date()
+      let r = t.toJSON().slice(0, 11) + t.toTimeString().slice(0, 5);
+      a.setAttribute( 'value', r );
+    }
+    
+  </script>
+</body>

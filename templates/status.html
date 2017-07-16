@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>{{ name }} - {{version}}</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="status">
+  <header></header>
+  <div class="page">
+    <h1> Python Server Status </h1>
+    <div>
+      <p> Application Name: {{ name }}</p>
+      <p> Application Version: {{ version }}</p>
+      <p> Application Started: {{ upsince }}</p>
+    </div>
+  </div>
+  <div> 
+    <p><a href="{{ url_for('home') }}"> Home Page </a></p>
+  </div>
+</body>
